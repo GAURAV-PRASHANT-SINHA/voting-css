@@ -1,0 +1,254 @@
+/* Importing Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* General Styling */
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Wrapper */
+.top-strip {
+    background: skyblue;
+    padding: 5px;
+    text-align: center;
+}
+
+.logoWrapper img {
+    width: 80%;
+    height: 80%;
+    padding-top: 10px;
+}
+
+/* General Button Styles */
+button {
+    background: red; /* Default background */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer on hover */
+    padding: 5px 8px; /* Padding for buttons */
+    border-radius: 2px; /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for effects */
+}
+
+/* Hover Effect for All Buttons */
+button:hover {
+    background-color: rgb(165, 223, 245); /* Light gray background on hover */
+    transform: scale(1.1); /* Slightly enlarge button */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+/* Cart Button */
+.cartTab button {
+    position: relative;
+    padding: 8px 10px !important; /* Adjusted padding for smaller size */
+    font-size: 0.875rem; /* Smaller font size */
+}
+
+.cartTab button svg {
+    color: rgb(79, 187, 230) !important;
+    font-size: 20px;
+}
+
+.cartTab .count {
+    position: absolute;
+    top: -5px;
+    right: -2px;
+    border-radius: 100%;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    background: #e33535;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+/* Product Display */
+.product_row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.imgWrapper {
+    flex: 1;
+    position: relative;
+}
+
+.productImage {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin-top: 20px;
+}
+
+.productDescription {
+    flex: 2;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* Expand Button */
+.expandButton {
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.expandButton::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5), rgba(0, 128, 255, 0) 70%);
+    transition: transform 0.5s ease;
+    transform: scale(0);
+    border-radius: 50%;
+}
+
+.expandButton:active::before {
+    transform: scale(1);
+    transition: transform 1s ease;
+}
+
+/* Dialog Animation */
+.dialogContent {
+    animation: scaleUp 0.3s ease-in-out;
+}
+
+/* App.css or Header.css */
+@keyframes moveText {
+    0% {
+        transform: translateX(200%);
+    }
+    100% {
+        transform: translateX(-200%);
+    }
+}
+
+.top-strip {
+    overflow: hidden; /* Ensures the text doesn't overflow its container */
+    white-space: nowrap; /* Keeps the text in a single line */
+    position: relative; /* Required for absolute positioning */
+}
+
+.marquee {
+    display: inline-block; /* Allows us to apply animation */
+    animation: moveText 25s linear infinite; /* Adjust duration as needed */
+}
+
+/* Dialog Scale Animation */
+@keyframes scaleUp {
+    0% {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Price and Counter Buttons */
+.price {
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.counterButtons {
+    display: flex;
+    align-items: center;
+}
+
+.counterButtons button {
+    border: 1px solid #007bff;
+    color: #007bff;
+}
+
+/* Ensure counter buttons also have hover effect */
+.counterButtons button:hover {
+    background-color: #e6f7ff; /* Light blue on hover */
+    color: #0056b3; /* Darker blue text on hover */
+}
+
+.counterButtons input {
+    width: 50px;
+    text-align: center;
+}
+
+/* Quantity Limit Warning */
+.maxLimitReached {
+    color: red;
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
+/* Dialog Background Blur */
+.dialogBackdropBlur {
+    filter: blur(5px);
+}
+
+footer {
+    background-color: skyblue;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.footer-container {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Distribute space between columns */
+    padding: 20px; /* Add padding to the footer */
+    background-color: skyblue; /* Optional: Change background color */
+}
+
+.footer-section {
+    flex: 1; /* Allow each section to grow equally */
+    margin: 0 15px; /* Add horizontal margin for spacing */
+    text-align: center; /* Center align the text */
+}
+
+.footer-section h4 {
+    margin: 10px 0; /* Space above and below the heading */
+}
+
+.footer-section p {
+    margin: 5px 0; /* Space above and below the paragraph */
+}
+
+@keyframes slide {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 10%, 0 10%);
+    }
+    50% {
+        clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
+    }
+    100% {
+        clip-path: polygon(0 20%, 100% 20%, 100% 30%, 0 30%);
+    }
+}
+
+/* Sign In Button Style */
+.signin-button {
+    background: #007bff; /* Blue background for Sign In */
+    color: white; /* White text */
+    padding: 10px 15px; /* Padding for the button */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    margin-top: 20px; /* Gap between cart and Sign In button */
+    margin-left: 20px; /* Add a left margin to create a gap from the cart */
+    transition: background-color 0.3s ease; /* Smooth transition */
+    cursor: pointer; /* Pointer on hover */
+}
+
+
+.signin-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+.btn-round{border-radius: 30px !important;
+    
+}
