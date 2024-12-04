@@ -9,7 +9,7 @@ import {
   MapPinIcon,
   PencilIcon,
 } from "@heroicons/react/20/solid";
-import "./CustomerDetails.css";
+// import "./CustomerDetails.css";
 import { Menu, Transition } from "@headlessui/react";
 
 function classNames(...classes) {

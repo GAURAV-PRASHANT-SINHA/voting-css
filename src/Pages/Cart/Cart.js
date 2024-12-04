@@ -1,7 +1,7 @@
 // src/pages/Cart/Cart.js
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Cart.css";
+// import "./Cart.css";
 
 const Cart = () => {
   const navigate = useNavigate();

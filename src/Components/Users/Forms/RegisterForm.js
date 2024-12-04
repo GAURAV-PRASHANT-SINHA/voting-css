@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerUserAction } from "../../../redux/slices/users/usersSlice.js";
 import ErrorMsg from "../../ErrorMsg/ErrorMsg.js";
 import LoadingComponent from "../../LoadingComp/LoadingComponent.js";
-import './Registerx.css'
+// import './Registerx.css'
 const RegisterForm = () => {
   //dispatch
   const dispatch = useDispatch();

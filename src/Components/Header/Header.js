@@ -10,7 +10,7 @@ import { BsHourglassSplit } from "react-icons/bs";
 import logo1 from '../../assets/images/logo1.jpg';
 import jar from '../../assets/images/jar.jpeg';
 import clickSound from '../../assets/sounds/click.mp3';
-import '../Header.css';
+// import '../Header.css';
 import { BiSupport } from "react-icons/bi";
 import {
   addOrderToCartaction,
@@ -116,85 +116,109 @@ const Header = () => {
 // console.log(products.data)
   return (
     <>
-      <div className={`headerWrapper ${openDialog ? 'dialogBackdropBlur' : ''}`}>
-        <div className={`top-strip`}>
-          <div className="container">
-            <span className="marquee"><IoWaterOutline  /> &nbsp; Only in <b>Patna</b> at the moment  &nbsp; <IoWaterOutline  /></span>
-          </div>
-        </div>
+    <div className={`headerWrapper ${openDialog ? 'blur-sm' : ''}`}>
+  {/* Top Announcement Bar */}
+  <div className="bg-blue-500 py-2">
+    <div className="container mx-auto">
+      <span className="text-white text-sm flex justify-center items-center space-x-2">
+        <IoWaterOutline className="inline-block" />
+        <span>
+          Only in <b>Patna</b> at the moment
+        </span>
+        <IoWaterOutline className="inline-block" />
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<div className={`${openDialog ? "blur-sm" : ""} bg-white shadow-md`}>
+  <div className="container mx-auto px-4">
+    {/* Header Top Section */}
+    <div className="flex items-center justify-between py-4">
+      {/* Logo Section */}
+      <div className="w-1/4">
+        <Link to="/">
+          <img src={hee} alt="logo" className="w-20" />
+        </Link>
       </div>
 
-      <div className={`Header ${openDialog ? 'dialogBackdropBlur' : ''}`}>
-        <div className="container">
-          <div className="header d-flex align-items-center justify-content-between">
-            <div className="logoWrapper d-flex align-items-center col-sm-2">
-              <Link to={'/'}>
-                <img src={hee} alt="logo" />
-                
-              </Link>
-            </div>
-            
-            
-            <div className="part3 d-flex align-items-center ml-auto">
-              <div className="position-relative mr-2 cartTab">
-              <Button className="circle button" onClick={openCartInNewTab}>
-                  <span className="count">{cartCount}</span>
-                  <FiShoppingCart className="sizebutton" />
-                </Button>
-                
-                {
-  userInfo ? (
-    <Link to="/customer-profile">
-      <CgProfile />
-    </Link>
-  ) : (
-    <Button onClick={goToSignUp} className="btn-blue btn-round mr-3">
-      Sign In
-    </Button>
-  )
-}
-                
-              </div>
-              
-            </div>
-          </div>
-
-          <div className="product_row w-100 d-flex justify-content-center">
-            <div className="item productItem d-flex flex-column align-items-center">
-              <div className="imgWrapper" style={{ position: "relative" }}>
-                <img src={products.data[0].image} alt="Product Jar" className="productImage" />
-                <Button
-                  variant="text"
-                  onClick={handleDialogOpen}
-                  className="expandButton"
-                  style={{ position: "absolute", top: "50px", left: "150px", color: "#000" }}
-                >
-                  <LuExpand size={24} />
-                </Button>
-              </div>
-
-              
-
-              <p className="price mt-3"><strong>Price:</strong> Rs.  ${products.data[0].price}</p>
-              {products.data[0].qtyLeft <= 0 ? (
-                <button
-                  style={{ cursor: "not-allowed" }}
-                  disabled
-                  className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-gray-600 py-3 px-8 text-base font-medium text-whitefocus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                  Add to cart
-                </button>
-              ) : (
-                <button
-                  onClick={() => addToCartHandler()}
-                >
-                  Add to cart
-                </button>
-              )}
-             
-            </div>
-          </div>
+      {/* Cart and User Profile Section */}
+      <div className="flex items-center space-x-6">
+        {/* Cart Icon */}
+        <div className="relative">
+          <button
+            className="relative bg-gray-100 p-2 rounded-full hover:bg-gray-200"
+            onClick={openCartInNewTab}
+          >
+            <FiShoppingCart className="text-2xl text-gray-700" />
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">
+                {cartCount}
+              </span>
+            )}
+          </button>
         </div>
+
+        {/* User Profile or Sign In */}
+        {userInfo ? (
+          <Link to="/customer-profile">
+            <CgProfile className="text-2xl text-gray-700 hover:text-gray-900" />
+          </Link>
+        ) : (
+          <button
+            onClick={goToSignUp}
+            className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+          >
+            Sign In
+          </button>
+        )}
       </div>
+    </div>
+
+    {/* Product Row Section */}
+    <div className="flex justify-center items-center py-6">
+      <div className="bg-gray-100 p-6 rounded-lg shadow-lg flex flex-col items-center">
+        {/* Product Image */}
+        <div className="relative w-48 h-56 bg-gray-100 rounded-md overflow-hidden shadow-lg">
+  <img
+    src={jar}
+    alt="Product Jar"
+    className="w-full h-full object-contain" // Ensures the entire image fits within the box
+  />
+  <button
+    className="absolute top-4 right-4 bg-white p-3 rounded-full shadow-md hover:bg-gray-200"
+    onClick={handleDialogOpen}
+  >
+    <LuExpand size={24} />
+  </button>
+</div>
+
+
+        {/* Product Price and Add to Cart */}
+        <p className="mt-4 text-lg font-semibold text-gray-800">
+          <strong>Price:</strong> Rs. ${products.data[0].price}
+        </p>
+        {products.data[0].qtyLeft <= 0 ? (
+          <button
+            disabled
+            className="mt-4 w-full py-2 bg-gray-400 text-white font-medium rounded-md cursor-not-allowed"
+          >
+            Out of Stock
+          </button>
+        ) : (
+          <button
+            onClick={addToCartHandler}
+            className="mt-4 w-full py-2 bg-blue-500 text-white font-medium rounded-md hover:bg-blue-600"
+          >
+            Add to Cart
+          </button>
+        )}
+      </div>
+    </div>
+  </div>
+</div>
+
 
       <Dialog open={openDialog} onClose={handleDialogClose} fullWidth maxWidth="sm" className="dialogBackground">
         <DialogTitle>
@@ -223,27 +247,37 @@ const Header = () => {
         </DialogContent>
       </Dialog>
 
-      <footer>
-        <div className="footer-container">
-          <div className="footer-section">
-            <BsHourglassSplit size={32} /> {/* Corrected usage */}
-            <h4>Reliable Delivery</h4>
-            <p>You don't need to chase local vendors anymore. We bring the water to your doorstep daily 8 am to 8 pm.</p>
-          </div>
-          <div className="footer-section">
-            <FiShoppingCart size={32}/>
-            <h4>Extreme Convenience</h4>
-            <p>You can quick an order in a few clicks and receive notifications about their order status and track deliveries in real time.
+      <footer className="bg-gray-800 text-white py-8">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+    {/* Reliable Delivery */}
+    <div className="flex flex-col items-center text-center">
+      <BsHourglassSplit size={40} className="text-yellow-400 mb-4" />
+      <h4 className="text-lg font-semibold mb-2">Reliable Delivery</h4>
+      <p className="text-sm">
+        You don't need to chase local vendors anymore. We bring the water to your doorstep daily from 8 am to 8 pm.
+      </p>
+    </div>
+    
+    {/* Extreme Convenience */}
+    <div className="flex flex-col items-center text-center">
+      <FiShoppingCart size={40} className="text-blue-400 mb-4" />
+      <h4 className="text-lg font-semibold mb-2">Extreme Convenience</h4>
+      <p className="text-sm">
+        Place orders in a few clicks and receive notifications about their status. Track deliveries in real time.
+      </p>
+    </div>
+    
+    {/* Quick Support */}
+    <div className="flex flex-col items-center text-center">
+      <BiSupport size={40} className="text-green-400 mb-4" />
+      <h4 className="text-lg font-semibold mb-2">Quick Support</h4>
+      <p className="text-sm">
+        We're here to assist you promptly with any concerns or issues.
+      </p>
+    </div>
+  </div>
+</footer>
 
-</p>
-          </div>
-          <div className="footer-section">
-            < BiSupport size={32}/>
-            <h4>Quick Support</h4>
-            <p>  it as quickly as possible.</p>
-          </div>
-        </div>
-      </footer>
     </>
   );
 };

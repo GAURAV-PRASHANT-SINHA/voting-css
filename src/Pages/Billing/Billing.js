@@ -1,6 +1,6 @@
 // src/pages/Billing/Billing.js
 import React from "react";
-import "./Billing.css"; // Custom styles for billing page
+// import "./Billing.css"; // Custom styles for billing page
 
 const Billing = () => {
   return (

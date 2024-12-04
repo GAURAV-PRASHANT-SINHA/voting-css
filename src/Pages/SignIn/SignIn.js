@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import "./SignIn.css"; // Custom styles
+// import "./SignIn.css"; // Custom styles
 import GoogleImg from "../../assets/images/googleImg.png"; // Adjusted path
 
 const SignIn = () => {

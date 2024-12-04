@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./SignUp.css"; // Add your custom styles here
+// import "./SignUp.css"; // Add your custom styles here
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignUp = () => {

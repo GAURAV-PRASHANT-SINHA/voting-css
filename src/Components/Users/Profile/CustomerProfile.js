@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserProfileAction } from "../../../redux/slices/users/usersSlice";
 import CustomerDetails from "./CustomerDetails";
 import ShippingAddressDetails from "./ShippingAddressDetails.js";
-import "./CustomerProfile.css";
+import jar from "./jar.jpeg"
+// import "./CustomerProfile.css";
 export default function CustomerProfile() {
   //dispatch
   const dispatch = useDispatch();
@@ -100,7 +101,7 @@ export default function CustomerProfile() {
               {order?.orderItems?.map((product) => (
                 <div key={product.id} className="product-container">
                   <img
-                    src={product.image}
+                    src={jar}
                     alt={product.name}
                     className="product-image"
                   />
